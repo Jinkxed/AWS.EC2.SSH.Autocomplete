@@ -92,7 +92,7 @@ $ ssh some_name_
 ### Notes
 
 * The EC2inventory python script is borrowed from the ansible repository, if you want the latest you are welcome to download it from here: https://raw.githubusercontent.com/ansible/ansible/devel/plugins/inventory/ec2.py
-* If you want public IP address instead of private IPs you can change it in the ec2.ini file
+* If you want public IP address instead of private IPs you can change it in the ec2.ini file Line 38 to: ip_address
 
 ### Development
 
