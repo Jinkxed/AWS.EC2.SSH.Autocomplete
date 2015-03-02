@@ -10,10 +10,7 @@
     # different path to ec2.ini, define the EC2_INI_PATH environment variable:
 
     export EC2_URL=https://ec2.us-west-1.amazonaws.com
-    export EC2_HOME=/usr/local/ec2
-    export PATH=$PATH:$EC2_HOME/bin
-    export EC2_INI_PATH=$EC2_HOME/ec2.ini
-
+    export EC2_INI_PATH=/usr/local/bin/ec2.ini
 
     instances=`/usr/local/ec2/bin/ec2inventory | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" | grep -A 1 tag_Name_ | sed -e 's/--//g' -e 's/"//g' -e 's/tag_Name_//g' -e 's/\[//;s/]//g'`
 

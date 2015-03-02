@@ -19,15 +19,11 @@ $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/maste
 
 ##### Install dependencies:
 ```sh
-$ brew install bash-completion jq
+$ brew install bash-completion jq awscli
+$ sudo easy_install pip
+$ pip install boto
 ```
 
-##### Install AWS CLI Bundle
-```sh
-$ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
-$ unzip awscli-bundle.zip
-$ ./awscli-bundle/install -b ~/bin/aws
-```
 ##### Clone the repo:
 ```sh
 $ git clone https://github.com/chad-upton/AWS.EC2.SSH.Autocomplete.git
@@ -54,14 +50,14 @@ vim ~/.bashrc
   fi
 ```
 
-##### Copy ec2inventory to /usr/local/ec2/bin (optional but make note of paths in updateSSH.sh)
+##### Copy ec2inventory to /usr/local/bin (optional but make note of paths in updateSSH.sh)
 ```sh
-$ cp ec2inventory /usr/local/ec2/bin
+$ cp ec2inventory /usr/local/bin
 ```
 
-##### Copy ec2.ini to /usr/local/ec2 (optional but again make note of paths)
+##### Copy ec2.ini to /usr/local/bin (optional but again make note of paths)
 ```sh
-$ cp ec2.ini /usr/local/ec2
+$ cp ec2.ini /usr/local/bin
 ```
 
 ##### Run ec2inventory to make sure it's working
