@@ -13,27 +13,31 @@ Note: I have a standard user I use on my instances whether it be my ldap user or
 ### Installation
 
 You need will need to have brew installed:
-
 ```sh
 $ ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
-Install dependencies:
+
+##### Install dependencies:
 ```sh
 $ brew install bash-completion jq
 ```
-Install AWS CLI Bundle
+
+##### Install AWS CLI Bundle
 ```sh
 $ curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
 $ unzip awscli-bundle.zip
 $ ./awscli-bundle/install -b ~/bin/aws
 ```
-Clone the repo:
+##### Clone the repo:
 ```sh
 $ git clone https://github.com/chad-upton/AWS.EC2.SSH.Autocomplete.git
 $ cd AWS.EC2.SSH.Autocomplete
 ```
-Add your EC2 Access Key & Secret Keys
 
+##### Add your ec2 keypairs to your keychain
+* Browse to your ec2_keypair.pem file that you created your instance with and right click -> open with keychain app
+
+##### Add your EC2 Access Key & Secret Keys
 Note: One thing you can do and most have done, is add these to your ~/.bashrc with lines 12-15 so not to have them stored in multiple places.  If you do that you will just need to source ~/.bashrc instead.
 ```sh
 $ vim updateSSH.sh
@@ -41,7 +45,7 @@ Line6: Uncomment and edit: export AWS_ACCESS_KEY_ID='AK123'
 Line7: Uncomment and edit: export AWS_SECRET_ACCESS_KEY='abc123'
 $ :wq to save
 ```
-Add Autocomplete to your home/.bashrc
+##### Add Autocomplete to your home/.bashrc
 ```sh
 vim ~/.bashrc
 # Autocompletion
@@ -49,39 +53,42 @@ vim ~/.bashrc
     . $(brew --prefix)/etc/bash_completion
   fi
 ```
-Copy ec2inventory to /usr/local/ec2/bin (optional but make note of paths in updateSSH.sh)
+
+##### Copy ec2inventory to /usr/local/ec2/bin (optional but make note of paths in updateSSH.sh)
 ```sh
 $ cp ec2inventory /usr/local/ec2/bin
 ```
-Copy ec2.ini to /usr/local/ec2 (optional but again make note of paths)
+
+##### Copy ec2.ini to /usr/local/ec2 (optional but again make note of paths)
 ```sh
 $ cp ec2.ini /usr/local/ec2
 ```
-Run ec2inventory to make sure it's working
+
+##### Run ec2inventory to make sure it's working
 ```sh
 $ source updateSSH.sh (or ~/.bashrc)
 $ ec2inventory
 ```
 
-You should get a giant output of metadata about your ec2 environment.  If no errors then run:
+##### You should get a giant output of metadata about your ec2 environment.  If no errors then run:
 ```sh
 $ updateSSH.sh
 ```
 If you do get errors, double check your paths are correct and you've added the access/secret keys.
 
-Check your ~/.ssh/config file for new entries
+##### Check your ~/.ssh/config file for new entries
 ```sh
 $ cat ~/.ssh/config
 ```
 
-Should now see a list of hosts setup like this:
+##### Should now see a list of hosts setup like this:
 ```sh
 Host some_name_tag
     HostName some_private_ip
     User some_user
 ```
 
-Test Autocompletion
+##### Test Autocompletion
 ```sh
 $ ssh some_name_
 ```
