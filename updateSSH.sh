@@ -12,7 +12,7 @@
     export EC2_URL=https://ec2.us-west-1.amazonaws.com
     export EC2_INI_PATH=/usr/local/bin/ec2.ini
 
-    instances=`/usr/local/ec2/bin/ec2inventory | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" | grep -A 1 tag_Name_ | sed -e 's/--//g' -e 's/"//g' -e 's/tag_Name_//g' -e 's/\[//;s/]//g'`
+    instances=`/usr/local/bin/ec2inventory | jq -r "to_entries|map(\"\(.key)=\(.value|tostring)\")|.[]" | grep -A 1 tag_Name_ | sed -e 's/--//g' -e 's/"//g' -e 's/tag_Name_//g' -e 's/\[//;s/]//g'`
 
     echo > ~/.ssh/config
 
